@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة التربية الإسلامية | مدرسة الشعلة الخاصة - الصف العاشر (ism.html)</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1b4332;
+            --primary-light: #2d6a4f;
+            --accent-color: #d4af37;
+            --accent-hover: #b89628;
+            --siraj-color: #0284c7;
+            --siraj-dark: #0369a1;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --radius-lg: 16px;
+            --radius-md: 10px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        /* Top Header & Credits */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            color: white;
+            padding: 30px 20px 40px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent-color), #fef08a, var(--siraj-color));
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .school-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(5px);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .credits-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+        }
+
+        .credit-pill {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
+
+        .credit-pill strong {
+            color: var(--accent-color);
+        }
+
+        /* Search & Filter Bar */
+        .controls-section {
+            max-width: 1100px;
+            margin: -25px auto 30px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-box-container {
+            background: white;
+            padding: 15px;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-input-wrapper {
+            flex: 1;
+            min-width: 280px;
+            position: relative;
+        }
+
+        .search-input-wrapper i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .search-input-wrapper input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .search-input-wrapper input:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 4px rgba(45, 106, 79, 0.1);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 2px;
+        }
+
+        .filter-btn {
+            background: #f1f5f9;
+            border: none;
+            padding: 10px 18px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 25px;
+        }
+
+        @media (max-width: 900px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sidebar Lesson List */
+        .lessons-sidebar {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+            max-height: 800px;
+            overflow-y: auto;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--bg-color);
+        }
+
+        .sidebar-title span {
+            background: #e2e8f0;
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            color: var(--text-dark);
+        }
+
+        .lesson-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .lesson-item {
+            padding: 12px 14px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .lesson-item:hover {
+            border-color: var(--primary-light);
+            background: #f0fdf4;
+            transform: translateX(-3px);
+        }
+
+        .lesson-item.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .lesson-item.active .lesson-unit {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .lesson-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lesson-name {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .lesson-unit {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .siraj-badge {
+            background: #e0f2fe;
+            color: var(--siraj-dark);
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 800;
+        }
+
+        /* Lesson Viewer Main Box */
+        .lesson-viewer {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .viewer-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+
+        .lesson-header-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .lesson-title-area h2 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        .lesson-tags {
+            display: flex;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 700;
+        }
+
+        .tag-unit { background: #fef3c7; color: #92400e; }
+        .tag-field { background: #e0e7ff; color: #3730a3; }
+
+        .siraj-integrate-btn {
+            background: linear-gradient(135deg, var(--siraj-color), var(--siraj-dark));
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+        }
+
+        .siraj-integrate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
+        }
+
+        /* Tabs Navigation inside Viewer */
+        .view-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            overflow-x: auto;
+        }
+
+        .view-tab {
+            background: transparent;
+            border: none;
+            padding: 8px 16px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .view-tab.active {
+            background: #f0fdf4;
+            color: var(--primary-color);
+        }
+
+        .view-tab.siraj-tab.active {
+            background: #f0f9ff;
+            color: var(--siraj-dark);
+        }
+
+        /* PowerPoint Interactive Slide Viewer Container */
+        .ppt-wrapper {
+            background: #0f172a;
+            border-radius: var(--radius-md);
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            color: white;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .slide-number {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .slide-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            border-right: 4px solid var(--accent-color);
+            padding-right: 12px;
+        }
+
+        .slide-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .slide-bullets li {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #e2e8f0;
+        }
+
+        .slide-bullets li i {
+            color: var(--accent-color);
+            margin-top: 5px;
+        }
+
+        .ppt-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            z-index: 2;
+        }
+
+        .ppt-btn {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .ppt-btn:hover:not(:disabled) {
+            background: var(--accent-color);
+            color: var(--text-dark);
+            border-color: var(--accent-color);
+        }
+
+        .ppt-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .slide-indicators {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background: var(--accent-color);
+            width: 24px;
+            border-radius: 10px;
+        }
+
+        /* Siraj Solutions Section */
+        .siraj-box {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: var(--radius-md);
+            padding: 20px;
+        }
+
+        .siraj-header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #7dd3fc;
+        }
+
+        .siraj-title {
+            color: var(--siraj-dark);
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .solution-item {
+            background: white;
+            border-radius: var(--radius-md);
+            padding: 15px;
+            margin-bottom: 12px;
+            border: 1px solid #e0f2fe;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+
+        .question-text {
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .question-text i {
+            color: var(--siraj-color);
+            margin-top: 4px;
+        }
+
+        .answer-text {
+            color: #0369a1;
+            background: #f8fafc;
+            padding: 10px 14px;
+            border-radius: 6px;
+            border-right: 3px solid var(--siraj-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Interactive Quiz Section */
+        .quiz-card {
+            background: #fafaf9;
+            border: 1px solid #e7e5e4;
+            border-radius: var(--radius-md);
+            padding: 20px;
+        }
+
+        .quiz-question {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-btn {
+            background: white;
+            border: 1px solid var(--border-color);
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            text-align: right;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary-light);
+            background: #f0fdf4;
+        }
+
+        .option-btn.correct {
+            background: #dcfce7 !important;
+            border-color: #22c55e !important;
+            color: #15803d;
+        }
+
+        .option-btn.wrong {
+            background: #fee2e2 !important;
+            border-color: #ef4444 !important;
+            color: #b91c1c;
+        }
+
+        .quiz-feedback {
+            margin-top: 15px;
+            padding: 10px 15px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            display: none;
+        }
+
+        /* Summary Download Box */
+        .summary-box {
+            background: #fffbebf5;
+            border: 1px solid #fde68a;
+            border-radius: var(--radius-md);
+            padding: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .download-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .download-btn:hover {
+            background: var(--primary-light);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--border-color);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Credits Section -->
+    <header>
+        <div class="header-content">
+            <div class="school-badge">
+                <i class="fa-solid fa-school"></i> مدرسة الشعلة الخاصة
+            </div>
+            <h1>منصة التربية الإسلامية | الصف العاشر</h1>
+            <p>جميع دروس الفصل الدراسي الأول المعتمدة - العروض التقديمية وحلول سراج الشاملة</p>
+            
+            <div class="credits-container">
+                <div class="credit-pill">
+                    <i class="fa-solid fa-chalkboard-user"></i> إعداد وتوجيه: <strong>أ. محمد عبدالباري</strong>
+                </div>
+                <div class="credit-pill">
+                    <i class="fa-solid fa-laptop-code"></i> تصميم وإنتاج: <strong>محمود إبراهيم</strong>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search and Filter Bar -->
+    <section class="controls-section">
+        <div class="search-box-container">
+            <div class="search-input-wrapper">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="ابحث عن اسم الدرس أو المفهوم (مثال: سورة الكهف، العقل...)" oninput="filterLessons()">
+            </div>
+            <div class="filter-tabs">
+                <button class="filter-btn active" onclick="setFilter('all', this)">كل الدروس (10)</button>
+                <button class="filter-btn" onclick="setFilter('الوحدة الأولى', this)">الوحدة الأولى</button>
+                <button class="filter-btn" onclick="setFilter('الوحدة الثانية', this)">الوحدة الثانية</button>
+                <button class="filter-btn" onclick="setFilter('الوحدة الثالثة', this)">الوحدة الثالثة</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="main-container">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="lessons-sidebar">
+            <div class="sidebar-title">
+                فهرس الدروس المقررة <span id="lessonCount">10 دروس</span>
+            </div>
+            <ul class="lesson-list" id="lessonsList">
+                <!-- Lessons JS Generated -->
+            </ul>
+        </aside>
+
+        <!-- Main Display Viewer -->
+        <section class="lesson-viewer">
+            <div class="viewer-card">
+                
+                <!-- Lesson Header Info -->
+                <div class="lesson-header-details">
+                    <div class="lesson-title-area">
+                        <h2 id="currentLessonTitle">جارٍ تحميل الدرس...</h2>
+                        <div class="lesson-tags">
+                            <span class="tag tag-unit" id="currentLessonUnit">الوحدة الأولى</span>
+                            <span class="tag tag-field" id="currentLessonField">الوحي الإلهي</span>
+                        </div>
+                    </div>
+                    <a href="https://siraj.shj.ae" target="_blank" class="siraj-integrate-btn">
+                        <i class="fa-solid fa-globe"></i> منصة سراج التعليمية
+                    </a>
+                </div>
+
+                <!-- Navigation Tabs inside Lesson -->
+                <div class="view-tabs">
+                    <button class="view-tab active" onclick="switchTab('ppt', this)">
+                        <i class="fa-solid fa-file-powerpoint"></i> الشرح والشرائح (PPT)
+                    </button>
+                    <button class="view-tab siraj-tab" onclick="switchTab('siraj', this)">
+                        <i class="fa-solid fa-square-check"></i> حلول الكتاب (دمج سراج)
+                    </button>
+                    <button class="view-tab" onclick="switchTab('quiz', this)">
+                        <i class="fa-solid fa-circle-question"></i> اختبر نفسك
+                    </button>
+                    <button class="view-tab" onclick="switchTab('summary', this)">
+                        <i class="fa-solid fa-file-lines"></i> ملخص الدرس
+                    </button>
+                </div>
+
+                <!-- Tab 1: PowerPoint Interactive Presentation -->
+                <div id="pptTab" class="tab-content">
+                    <div class="ppt-wrapper">
+                        <div class="slide-content" id="slideContent">
+                            <!-- Dynamic Slide Content -->
+                        </div>
+                        <div class="ppt-controls">
+                            <button class="ppt-btn" id="prevBtn" onclick="changeSlide(-1)">
+                                <i class="fa-solid fa-chevron-right"></i> السابق
+                            </button>
+                            <div class="slide-indicators" id="slideDots">
+                                <!-- Dots -->
+                            </div>
+                            <button class="ppt-btn" id="nextBtn" onclick="changeSlide(1)">
+                                التالي <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Integrated Siraj Solutions -->
+                <div id="sirajTab" class="tab-content" style="display: none;">
+                    <div class="siraj-box">
+                        <div class="siraj-header-bar">
+                            <div class="siraj-title">
+                                <i class="fa-solid fa-graduation-cap"></i> إجابات وبنك حلول منصة سراج المعتمدة
+                            </div>
+                            <span style="font-size: 0.85rem; color: #0284c7; font-weight:700;">مدرسة الشعلة الخاصة</span>
+                        </div>
+                        <div id="sirajSolutionsContainer">
+                            <!-- Solutions render -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Interactive Quiz -->
+                <div id="quizTab" class="tab-content" style="display: none;">
+                    <div class="quiz-card">
+                        <div class="quiz-question" id="quizQuestion">السؤال سيظهر هنا...</div>
+                        <div class="options-grid" id="quizOptions">
+                            <!-- Options -->
+                        </div>
+                        <div class="quiz-feedback" id="quizFeedback"></div>
+                    </div>
+                </div>
+
+                <!-- Tab 4: Summary & Download -->
+                <div id="summaryTab" class="tab-content" style="display: none;">
+                    <div class="summary-box">
+                        <div>
+                            <h4 style="font-weight: 800; color: #92400e; margin-bottom: 5px;">ملخص الدرس والنقاط الأساسية</h4>
+                            <p style="color: #78350f; font-size: 0.95rem;" id="summaryDescription">احصل على نسخة ملخصة من أهم المفاهيم والقيم المستفادة للدرس.</p>
+                        </div>
+                        <button class="download-btn" onclick="downloadSummary()">
+                            <i class="fa-solid fa-download"></i> تحميل الملخص (TXT)
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>تم التطوير بواسطة الطالب <strong>محمود إبراهيم</strong> - تحت إشراف الأستاذ <strong>محمد عبدالباري</strong></p>
+        <p>جميع الحقوق محفوظة لمدرسة الشعلة الخاصة © 2026</p>
+    </footer>
+
+    <!-- Application Script Data & Logic -->
+    <script>
+        const lessonsData = [
+            {
+                id: 1,
+                title: "سورة الكهف (1 - 8)",
+                unit: "الوحدة الأولى",
+                field: "الوحي الإلهي",
+                slides: [
+                    { title: "المحور الأول: مقدمة وتلاوة الآيات الكريمة", bullets: ["تنزيل الكتاب بالحق هداية ورحمة للبشرية.", "إثبات التوحيد ونفي الولد عن الله تعالى.", "الغاية من خلق الزينة على الأرض هي الابتلاء والتمحيص."] },
+                    { title: "المحور الثاني: المفردات والتراكيب", bullets: ["عِوَجَا: ميلاً عن الحق واستقامة.", "قَيِّماً: مستقيماً وموافقاً للحق.", "بَاخِعٌ نَّفْسَكَ: مهلك نفسك غمّاً وحزناً.", "صَعِيداً جُرُزاً: تراباً يابساً لا نبات فيه."] },
+                    { title: "المحور الثالث: الهدايات والعبر", bullets: ["القرآن الكريم هو المصدر الأساسي للهداية.", "تخفيف الحزن عن النبي صلى الله عليه وسلم في عدم إيمان قومه.", "حقيقة الدنيا أنها دار ابتلاء وليست دار قرار."] }
+                ],
+                sirajSolutions: [
+                    { q: "ما الحكمة من أن الله جعل ما على الأرض زينة لها؟", a: "ليبتلي الناس ويختبرهم أيهم أحسن عملاً وأخلص نية." },
+                    { q: "علامَ يدل قوله تعالى: (الْحَمْدُ لِلَّهِ الَّذِي أَنزَلَ عَلَى عَبْدِهِ الْكِتَابَ)؟", a: "وجوب شكر الله تعالى على نعمة إنزال القرآن الكريم على نبينا محمد." }
+                ],
+                quiz: {
+                    q: "معنى كلمة (بَاخِعٌ نَّفْسَكَ) في سورة الكهف:",
+                    options: ["مهلك نفسك غمّاً", "فرح ومسرور", "محافظ على صحتك", "مبتعد عن الناس"],
+                    correct: 0,
+                    explanation: "باخع نفسك تعني مهلكها من شدة الحزن على عدم إيمانهم."
+                }
+            },
+            {
+                id: 2,
+                title: "القرآن المكي والقرآن المدني",
+                unit: "الوحدة الأولى",
+                field: "علوم القرآن",
+                slides: [
+                    { title: "المحور الأول: ضابط التفريق بين المكي والمدني", bullets: ["التعريف الزمني: المكي ما نزل قبل الهجرة، والمدني ما نزل بعد الهجرة.", "التعريف المكاني: المكي ما نزل بمكة والمدني ما نزل بالمدينة.", "التعريف الموجه: المكي ما خوطب به أهل مكة، والمدني ما خوطب به أهل المدينة."] },
+                    { title: "المحور الثاني: خصائص القرآن المكي", bullets: ["التركيز على عقيدة التوحيد واليوم الآخر.", "قصر السور والآيات وقوة الفصاحة.", "الدعوة إلى مكارم الأخلاق ونبذ الشرك."] },
+                    { title: "المحور الثالث: خصائص القرآن المدني", bullets: ["تفصيل الأحكام الشرعية والفرائض والحدود.", "طول السور والآيات بأسلوب يسر وسهولة.", "حديث عن الجهاد وأحكام المنافقين وتنظيم المعاملات."] }
+                ],
+                sirajSolutions: [
+                    { q: "عرف المكي والمدني بالاعتبار الزمني (وهو الأرجح)؟", a: "المكي: ما نزل قبل هجرة النبي إلى المدينة المنورة. المدني: ما نزل بعد الهجرة حتى لو كان خارج المدينة." },
+                    { q: "اذكر خاصيتين من خصائص القرآن المكي؟", a: "1. الدعوة إلى التوحيد والعقيدة. 2. قصر الآيات وجزالة الألفاظ." }
+                ],
+                quiz: {
+                    q: "الضابط الزمني المعتمد المختار عند جمهور العلماء للمكي والمدني هو:",
+                    options: ["مكان النزول", "زمن النزول قبل أو بعد الهجرة", "نوع المخاطبين", "طول أو قصر السورة"],
+                    correct: 1,
+                    explanation: "المعيار الزمني (قبل الهجرة وبعدها) هو أدق الموازين وأشملها."
+                }
+            },
+            {
+                id: 3,
+                title: "العقل في الإسلام",
+                unit: "الوحدة الأولى",
+                field: "العقيدة الإسلامية",
+                slides: [
+                    { title: "المحور الأول: مكانة العقل في الإسلام", bullets: ["العقل هو مناط التكليف والمسؤولية الشرعية.", "حث القرآن الكريم على التفكير والتدبر في عشرات الآيات.", "تكريم الإنسان بوهبه نعمة العقل والفكر."] },
+                    { title: "المحور الثاني: مجالات عمل العقل ومحدداته", bullets: ["يعمل العقل في التدبر في الكون، استنباط الأحكام، والتطور العلمي.", "يقف العقل عند الغيبيات والغيبيات التي لا يحيط بها علم الإنسان.", "التكامل بين العقل الصريح والنقل الصحيح."] }
+                ],
+                sirajSolutions: [
+                    { q: "لماذا جعل الإسلام العقل مناط التكليف؟", a: "لأن الإدراك والتمييز بين الخير والشر وتلقي أوامر الله لا يتم إلا بواسطة العقل." },
+                    { q: "ما هي حدود عمل العقل البشري؟", a: "عمارة الأرض وتدبر الكون، بينما يقف عند الغيبيات كالروح وصفات الله الجوهرية." }
+                ],
+                quiz: {
+                    q: "يقصد بكون العقل (مناط التكليف) أنه:",
+                    options: ["سبب توجيه الأحكام الشرعية للإنسان العاقل", "أنه يحلل ويحرم بغير نص", "أنه يعلم الغيب", "أنه يلغي باقي الحواس"],
+                    correct: 0,
+                    explanation: "مناط التكليف يعني شرط توجيه الأوامر والنواهي الشرعية."
+                }
+            },
+            {
+                id: 4,
+                title: "المدارس الفقهية",
+                unit: "الوحدة الثانية",
+                field: "الفقه الإسلامي",
+                slides: [
+                    { title: "المحور الأول: نشأة المدارس الفقهية", bullets: ["نشأت نتيجة اتساع الرقعة الإسلامية وتعدد القضايا والوقائع.", "مدرسة الحديث بالمصادر والنصوص (المدينة المنورة).", "مدرسة الرأي والقياس الاستنباطي (الكوفة والبصرة)."] },
+                    { title: "المحور الثاني: أئمة المذاهب الأربعة المتبوعة", bullets: ["الإمام أبو حنيفة النعمان (المذهب الحنفي).", "الإمام مالك بن أنس (المذهب المالكي).", "الإمام محمد بن إدريس الشافعي (المذهب الشافعي).", "الإمام أحمد بن حنبل (المذهب الحنبلي)."] }
+                ],
+                sirajSolutions: [
+                    { q: "علل: ظهور المدارس الفقهية وتعدد الاجتهادات؟", a: "بسبب انتشار الصحابة في الأبصار، واختلاف البيئات، وتجدد الوقائع والنوازل." },
+                    { q: "من هو مؤسس مدرسة الحديث بالمدينة المنورة؟", a: "الإمام مالك بن أنس رحمه الله." }
+                ],
+                quiz: {
+                    q: "المذهب الذي يمثل مدرسة أهل الرأي في العراق هو مذهب الإمام:",
+                    options: ["أبي حنيفة النعمان", "مالك بن أنس", "أحمد بن حنبل", "الشافعي"],
+                    correct: 0,
+                    explanation: "مدرسة أهل الرأي ارتبطت بشدة بالإمام أبي حنيفة النعمان في الكوفة."
+                }
+            },
+            {
+                id: 5,
+                title: "السيدة سكينة بنت الحسين",
+                unit: "الوحدة الثانية",
+                field: "السيرة والشخصيات",
+                slides: [
+                    { title: "المحور الأول: البطاقة التعريفية والنشأة", bullets: ["اسمها: أميمة (أو أليمة) ولقبها 'سكينة' للطفها وسكون نفسها.", "والدها: الإمام الحسين بن علي بن أبي طالب رضي الله عنهما.", "نشأت في بيت النبوة والفضيلة والعلم."] },
+                    { title: " المحور الثاني: صفاتها وأثرها الثقافي", bullets: ["الفصاحة والبلاغة والشجاعة الأدبية.", "كانت راعية للعلم والأدب ويقصده أئمة اللغة للاحتكام.", "الكرم والجود والصبر على المصائب."] }
+                ],
+                sirajSolutions: [
+                    { q: "ما سبب تلقيبها بـ (سكينة)؟", a: "لما كان يلوح عليها من السكينة والهدوء والوقار واللطف." },
+                    { q: "اذكر أهم الدروس المستفادة من سيرتها؟", a: "التمسك بالدين، الاستزادة من العلم والبلاغة، والصبر عند الأزمات." }
+                ],
+                quiz: {
+                    q: "تعتبر السيدة سكينة بنت الحسين القدوة في:",
+                    options: ["الفصاحة والعلم والوقار", "التجارات الجاهلية", "الابتعاد عن مجالس العلم", "الانعزال"],
+                    correct: 0,
+                    explanation: "كانت السيدة سكينة منارة في الفصاحة والعلم والأخلاق والوقار."
+                }
+            },
+            {
+                id: 6,
+                title: "أصحاب الكهف (9 - 26)",
+                unit: "الوحدة الثانية",
+                field: "التفسير والتدبر",
+                slides: [
+                    { title: "المحور الأول: قصة فتية الإيمان", bullets: ["فتية آمنوا بربهم وزادهم الله هدى.", "ثباتهم على العقيدة ورفض الشرك رغم تهديد الملوك.", "اللجوء إلى الكهف فراراً بدينهم وتوكلاً على الله."] },
+                    { title: "المحور الثاني: معجزة النوم والبعث", bullets: ["ضرب الله على آذانهم سنين عدداً (309 سنين قمرية).", "تقليبهم ذات اليمين وذات الشمال لحفظ أجسادهم.", "بعثهم ليكونوا آية ودليلاً على قدرة الله على البعث."] }
+                ],
+                sirajSolutions: [
+                    { q: "لماذا لجأ الفتية إلى الكهف؟", a: "حماية لعقيدتهم ودينهم من الفتنة والبطش والشرك." },
+                    { q: "كم لبث أصحاب الكهف في كهفهم؟", a: "ثلاث مائة سنين وازدادوا تسعاً (309 سنوات)." }
+                ],
+                quiz: {
+                    q: "الحكمة الرئيسية من إعادة إحياء فتية الكهف بعد نومهم الطويل هي:",
+                    options: ["إثبات قدرة الله على البعث وحماية المؤمنين", "البحث عن الطعام في المدينة", "عد السنين والحساب", "بناء مسجد فوقهم فقط"],
+                    correct: 0,
+                    explanation: "بعثهم كان معجزة تؤكد قدرة الله على البعث بعد الموت."
+                }
+            },
+            {
+                id: 7,
+                title: "مراحل جمع القرآن الكريم",
+                unit: "الوحدة الثالثة",
+                field: "علوم القرآن",
+                slides: [
+                    { title: "المحور الأول: الجمع في عهد النبي ﷺ", bullets: ["كان الحفظ في الصدور وكتابته على الرقاع واللخاف والأكتاف.", "كتاب الوحي هم جمع من الصحابة كزيد بن ثابت وأبي بن كعب."] },
+                    { title: "المحور الثاني: الجمع في عهد أبي بكر الصديق", bullets: ["السبب: استشهاد عدد كبير من القراء في معركة اليمامة.", "إشراف زيد بن ثابت على جمع المصحف الشريف في إمام واحد."] },
+                    { title: "المحور الثالث: الجمع في عهد عثمان بن عفان", bullets: ["السبب: اختلاف القراءات بين الأجناد والبلدان.", "نسخ المصاحف وإرسالها للأبصار الموحدة بلغة قريش."] }
+                ],
+                sirajSolutions: [
+                    { q: "ما السبب المباشر لجمع القرآن في عهد أبي بكر الصديق رضي الله عنه؟", a: "استشهاد عدد كبير من حفظة القرآن الكريم في حروب الردة (معركة اليمامة)." },
+                    { q: "ما الفرق بين جمع أبي بكر وجمع عثمان؟", a: "جمع أبي بكر: في صحف واحدة. جمع عثمان: توحيد المصاحف على لسان واحد وترتيب السور." }
+                ],
+                quiz: {
+                    q: "الصحابي الجليل الذي كُلّف بجمع القرآن الكريم في عهدي أبي بكر وعثمان هو:",
+                    options: ["زيد بن ثابت", "عمر بن الخطاب", "علي بن أبي طالب", "عبدالله بن مسعود"],
+                    correct: 0,
+                    explanation: "زيد بن ثابت رضي الله عنه كان رئيس لجنة جمع المصحف لدقته وحفظه."
+                }
+            },
+            {
+                id: 8,
+                title: "منهجية التفكير في الإسلام",
+                unit: "الوحدة الثالثة",
+                field: "الفكر الإسلامي",
+                slides: [
+                    { title: "المحور الأول: خصائص التفكير العلمي في الإسلام", bullets: ["الاعتماد على الدليل والبرهان وإعمال العقل.", "الموضوعية والابتعاد عن الهوى والظن والتقليد الأعمى.", "الشمولية والرغبة في التطور واستكشاف الحقائق."] },
+                    { title: "المحور الثاني: معوقات التفكير المنهجي", bullets: ["اتباع الهوى والأوهام غير المستندة لحقائق.", "التقليد التعصبي والآبائية دون تمحيص.", "التسرع في إصدار الأحكام قبل التثبت."] }
+                ],
+                sirajSolutions: [
+                    { q: "اذكر عقبة من عقبات التفكير الموضوعي حذر منها القرآن؟", a: "اتباع الظن والهوى والتقليد الأعمى للآباء والأسلاف بدون علم." },
+                    { q: "كيف يحقق المسلم منهجية التفكير الصحيح؟", a: "بالتثبت من الأخبار، والتفكير النقدي المعتمد على الأدلة والمشاهدة." }
+                ],
+                quiz: {
+                    q: "من أكبر معوقات التفكير السليم التي حاربها الإسلام:",
+                    options: ["التقليد الأعمى والتسرع", "البحث العلمي", "التدبر في الطبيعة", "التثبت والتبين"],
+                    correct: 0,
+                    explanation: "التقليد دون دليل والتسرع يعطلان العقل ونضجه."
+                }
+            },
+            {
+                id: 9,
+                title: "الوقف عطاء ونماء",
+                unit: "الوحدة الثالثة",
+                field: "الفقه والمعاملات",
+                slides: [
+                    { title: "المحور الأول: مفهوم الوقف وشروطه", bullets: ["تعريف الوقف: حبس الأصل وتسييل وتسبيل المنفعة للمحتاجين.", "أنواعه: وقف خيري، وقف أهلي (ذري)، ووقف مشترك.", "حكمه: مستحب وهو من الصدقات الجارية التي لا تنقطع."] },
+                    { title: "المحور الثاني: الآثار الاقتصادية والاجتماعية للوقف", bullets: ["تحقيق التكافل الاجتماعي وسد حاجات الفقراء والمساكين.", "دعم المؤسسات التعليمية والصحية والمستشفيات.", "ضمان الاستدامة المالية للمشاريع الخيرية."] }
+                ],
+                sirajSolutions: [
+                    { q: "ما المقصود بحبس الأصل وتسبيل المنفعة؟", a: "الاحتفاظ بالعين (كعقار أو بستان) دون بيعها أو هبتها، والتبرع بإنتاجها أو ريعها للفقراء." },
+                    { q: "اذكر فائدة واحدة للوقف على المجتمع؟", a: "تخفيف العبء عن الدولة وتحقيق التكافل الاجتماعي والتنمية المستدامة." }
+                ],
+                quiz: {
+                    q: "الوقف يعد مثالاً واضحاً على:",
+                    options: ["الصدقة الجارية المستمرة", "البيع والتجارة الربحية", "الضرائب المباشرة", "الديون المهرية"],
+                    correct: 0,
+                    explanation: "الوقف هو حبس المال والتصدق بمنفعته واستمراريته كصدقة جارية."
+                }
+            },
+            {
+                id: 10,
+                title: "التنمية البشرية في الإسلام",
+                unit: "الوحدة الثالثة",
+                field: "القيم والسلوك",
+                slides: [
+                    { title: "المحور الأول: مفهوم التنمية البشرية إسلامياً", bullets: ["تطوير قدرات الإنسان الروحية والعقلية والجسدية ليكون خليفة في الأرض.", "التركيز على بناء الفرد الصالح والمجتمع المتماسك."] },
+                    { title: "المحور الثاني: المقومات والوسائل", bullets: ["العلم والتعلم المستمر وتطوير المهارات.", "العمل الصالح وإتقان المهن والحرف.", "المحافظة على الصحة والجسد والنفسية التوافقية."] }
+                ],
+                sirajSolutions: [
+                    { q: "كيف يساهم الإسلام في التنمية البشرية؟", a: "من خلال الاهتمام بالتعليم، وتزكية الأخلاق، والحث على العمل الصالح وإتقان الإنجاز." },
+                    { q: "ما العلاقة بين الاستخلاف والتنمية البشرية؟", a: "الإنسان مستخلف لعمارة الأرض وهذا يتطلب تطوير قدراته وكفاءته المستمرة." }
+                ],
+                quiz: {
+                    q: "الركيزة الأولى للتنمية البشرية في المفهوم الإسلامي تبدأ بـ:",
+                    options: ["تزكية النفس وبناء العقيدة والعلم", "جمع الثروة المالية", "المظاهر الخارجية", "الانعزال عن المجتمع"],
+                    correct: 0,
+                    explanation: "التنمية تبدأ بالقيم الروحية والعلمية لبناء الإنسان الصالح."
+                }
+            }
+        ];
+
+        let currentLessonIndex = 0;
+        let currentSlideIndex = 0;
+        let selectedFilter = 'all';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderLessonList();
+            loadLesson(0);
+        });
+
+        function renderLessonList() {
+            const listContainer = document.getElementById('lessonsList');
+            const searchVal = document.getElementById('searchInput').value.trim().toLowerCase();
+            listContainer.innerHTML = '';
+
+            let count = 0;
+            lessonsData.forEach((lesson, index) => {
+                const matchesFilter = selectedFilter === 'all' || lesson.unit === selectedFilter;
+                const matchesSearch = lesson.title.toLowerCase().includes(searchVal) || lesson.field.toLowerCase().includes(searchVal);
+
+                if (matchesFilter && matchesSearch) {
+                    count++;
+                    const li = document.createElement('li');
+                    li.className = `lesson-item ${index === currentLessonIndex ? 'active' : ''}`;
+                    li.onclick = () => loadLesson(index);
+                    li.innerHTML = `
+                        <div class="lesson-info">
+                            <span class="lesson-name">${lesson.title}</span>
+                            <span class="lesson-unit">${lesson.unit} • ${lesson.field}</span>
+                        </div>
+                        <span class="siraj-badge">سراج</span>
+                    `;
+                    listContainer.appendChild(li);
+                }
+            });
+
+            document.getElementById('lessonCount').innerText = `${count} دروس`;
+        }
+
+        function setFilter(unit, btn) {
+            selectedFilter = unit;
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderLessonList();
+        }
+
+        function filterLessons() {
+            renderLessonList();
+        }
+
+        function loadLesson(index) {
+            currentLessonIndex = index;
+            currentSlideIndex = 0;
+
+            const lesson = lessonsData[index];
+
+            document.querySelectorAll('.lesson-item').forEach((item, idx) => {
+                item.classList.toggle('active', idx === index);
+            });
+
+            document.getElementById('currentLessonTitle').innerText = lesson.title;
+            document.getElementById('currentLessonUnit').innerText = lesson.unit;
+            document.getElementById('currentLessonField').innerText = lesson.field;
+
+            renderSlide();
+            renderSirajSolutions();
+            renderQuiz();
+
+            document.getElementById('summaryDescription').innerText = `ملخص درس "${lesson.title}" يشمل أبرز المفاهيم، القيم المستفادة، وتطبيقات منصة سراج.`;
+        }
+
+        function renderSlide() {
+            const lesson = lessonsData[currentLessonIndex];
+            const slide = lesson.slides[currentSlideIndex];
+            const container = document.getElementById('slideContent');
+
+            let bulletsHtml = slide.bullets.map(b => `<li><i class="fa-solid fa-circle-check"></i> <span>${b}</span></li>`).join('');
+
+            container.innerHTML = `
+                <div class="slide-number">شريحة ${currentSlideIndex + 1} من ${lesson.slides.length}</div>
+                <h3 class="slide-title">${slide.title}</h3>
+                <ul class="slide-bullets">${bulletsHtml}</ul>
+            `;
+
+            document.getElementById('prevBtn').disabled = currentSlideIndex === 0;
+            document.getElementById('nextBtn').disabled = currentSlideIndex === lesson.slides.length - 1;
+
+            const dotsContainer = document.getElementById('slideDots');
+            dotsContainer.innerHTML = '';
+            lesson.slides.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.className = `dot ${idx === currentSlideIndex ? 'active' : ''}`;
+                dot.onclick = () => { currentSlideIndex = idx; renderSlide(); };
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function changeSlide(direction) {
+            const lesson = lessonsData[currentLessonIndex];
+            if (currentSlideIndex + direction >= 0 && currentSlideIndex + direction < lesson.slides.length) {
+                currentSlideIndex += direction;
+                renderSlide();
+            }
+        }
+
+        function renderSirajSolutions() {
+            const lesson = lessonsData[currentLessonIndex];
+            const container = document.getElementById('sirajSolutionsContainer');
+
+            if (!lesson.sirajSolutions || lesson.sirajSolutions.length === 0) {
+                container.innerHTML = '<div class="empty-state"><i class="fa-solid fa-folder-open"></i><p>لا توجد حلول متاحة لهذا الدرس حالياً.</p></div>';
+                return;
+            }
+
+            container.innerHTML = lesson.sirajSolutions.map((sol, idx) => `
+                <div class="solution-item">
+                    <div class="question-text">
+                        <i class="fa-solid fa-circle-question"></i>
+                        <span>س${idx + 1}: ${sol.q}</span>
+                    </div>
+                    <div class="answer-text">
+                        <strong>ج:</strong> ${sol.a}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderQuiz() {
+            const lesson = lessonsData[currentLessonIndex];
+            const quiz = lesson.quiz;
+
+            document.getElementById('quizQuestion').innerText = quiz.q;
+            const optionsContainer = document.getElementById('quizOptions');
+            const feedback = document.getElementById('quizFeedback');
+            feedback.style.display = 'none';
+
+            optionsContainer.innerHTML = quiz.options.map((opt, idx) => `
+                <button class="option-btn" onclick="checkAnswer(${idx})">${opt}</button>
+            `).join('');
+        }
+
+        function checkAnswer(selectedIndex) {
+            const lesson = lessonsData[currentLessonIndex];
+            const quiz = lesson.quiz;
+            const buttons = document.querySelectorAll('.option-btn');
+            const feedback = document.getElementById('quizFeedback');
+
+            buttons.forEach((btn, idx) => {
+                btn.disabled = true;
+                if (idx === quiz.correct) {
+                    btn.classList.add('correct');
+                }
+                if (idx === selectedIndex && idx !== quiz.correct) {
+                    btn.classList.add('wrong');
+                }
+            });
+
+            feedback.style.display = 'block';
+            if (selectedIndex === quiz.correct) {
+                feedback.style.background = '#dcfce7';
+                feedback.style.color = '#15803d';
+                feedback.innerHTML = `<i class="fa-solid fa-circle-check"></i> إجابة صحيحة! ${quiz.explanation}`;
+            } else {
+                feedback.style.background = '#fee2e2';
+                feedback.style.color = '#b91c1c';
+                feedback.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> إجابة خاطئة. الإجابة الصحيحة هي: ${quiz.options[quiz.correct]}. (${quiz.explanation})`;
+            }
+        }
+
+        function switchTab(tabName, btn) {
+            document.querySelectorAll('.view-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.querySelectorAll('.tab-content').forEach(tc => tc.style.display = 'none');
+            document.getElementById(`${tabName}Tab`).style.display = 'block';
+        }
+
+        function downloadSummary() {
+            const lesson = lessonsData[currentLessonIndex];
+            let content = `مدرسة الشعلة الخاصة - مادة التربية الإسلامية\n`;
+            content += `الصف العاشر - الفصل الدراسي الأول\n`;
+            content += `إعداد: أ. محمد عبدالباري | إنتاج: محمود إبراهيم\n`;
+            content += `===============================================\n\n`;
+            content += `عنوان الدرس: ${lesson.title}\n`;
+            content += `التقسيم: ${lesson.unit} (${lesson.field})\n\n`;
+            
+            content += `--- محاور الشرح (PowerPoint) ---\n`;
+            lesson.slides.forEach((s, idx) => {
+                content += `\nشريحة ${idx + 1}: ${s.title}\n`;
+                s.bullets.forEach(b => content += `- ${b}\n`);
+            });
+
+            content += `\n--- حلول أسئلة الدرس (دمج منصة سراج) ---\n`;
+            lesson.sirajSolutions.forEach((sol, idx) => {
+                content += `\nس${idx + 1}: ${sol.q}\nج: ${sol.a}\n`;
+            });
+
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `ملخص_${lesson.title.replace(/\s+/g, '_')}.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
